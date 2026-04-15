@@ -76,7 +76,30 @@ window.onload = function () {
       /* Task 1.3. Add the genre buttons to the listElement and 
          initialize them with a click handler that calls the 
          loadMovies(...) function above. */
+         
       const genres = JSON.parse(xhr.responseText);
+      //button load all movies
+      new ElementBuilder("li")
+          .append(new ElementBuilder("button").text("Show All").class("genre")
+                    .listener("click", () => loadMovies()))
+                    .appendTo(listElement);
+
+      /* later to add my favorite movies, need to addid movie-model.js first
+      need to add a if(item !== fav) genres.for each below? 
+      new ELementBuilder("li")
+          .append(new ElementBuilder("button").text("My favs").class("genre")
+                    .listener("click", () => loadMovies(fav)))
+                    .appendTo(listElement);
+       
+                    */                           
+
+      //for each genres make one button
+      genres.forEach(genre => {
+        new ElementBuilder("li")
+          .append(new ElementBuilder("button").text(genre).class("genre")
+                    .listener("click", () => loadMovies(genre)))
+                    .appendTo(listElement);
+      });
 
       /* When a first button exists, we click it to load all movies. */
       const firstButton = document.querySelector("nav button");
