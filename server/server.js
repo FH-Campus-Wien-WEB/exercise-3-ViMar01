@@ -42,7 +42,15 @@ app.get('/genres', function (req, res) {
  */
 app.get('/movies', function (req, res) {
   let movies = Object.values(movieModel)
-  res.send(movies);
+  let genreMovies = []
+  if(req.query.genre){
+    movies.forEach(movie => {
+      if (movie.Genres.includes(req.query.genre))
+        genreMovies.push(movie);
+    });
+    res.send(genreMovies);
+  } else{
+  res.send(movies);}
 })
 
 // Configure a 'get' endpoint for a specific movie
