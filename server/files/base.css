@@ -1,11 +1,11 @@
 body {
   font-family: "Trebuchet MS", sans-serif;
-  background-color: brown;
+  background-color: rgb(21, 10, 48);
   color: beige;
 }
 
 main {
-  color: #333;
+  color: #212121;
 }
 
 button {
@@ -17,4 +17,8 @@ button {
 
 button:hover {
   background-color: darkgray;
+}
+
+footer{
+  background-color: rgb(37, 36, 34);
 }

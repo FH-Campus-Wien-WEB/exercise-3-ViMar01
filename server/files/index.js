@@ -19,9 +19,11 @@ function formatRuntime(runtime) {
 }
 
 function appendMovie(movie, element) {
-  new ElementBuilder("article").id(movie.imdbID)
-          .append(new ElementBuilder("img").with("src", movie.Poster))
-          .append(new ElementBuilder("h1").text(movie.Title))
+  new ElementBuilder("article").id(movie.imdbID).class("movie")
+          .append(new ElementBuilder("div").class("posterContainer")
+              .append(new ElementBuilder("img").with("src", movie.Poster)))
+          .append(new ElementBuilder("div").class("infoContainer")
+              .append(new ElementBuilder("h2").text(movie.Title))
           .append(new ElementBuilder("p")
               .append(new ElementBuilder("button").text("Edit")
                     .listener("click", () => location.href = "edit.html?imdbID=" + movie.imdbID)))
@@ -37,7 +39,7 @@ function appendMovie(movie, element) {
           .append(new ElementBuilder("h2").pluralizedText("Writer", movie.Writers))
           .append(new ListBuilder().items(movie.Writers))
           .append(new ElementBuilder("h2").pluralizedText("Actor", movie.Actors))
-          .append(new ListBuilder().items(movie.Actors))
+          .append(new ListBuilder().items(movie.Actors)))
           .appendTo(element);
 }
 
@@ -89,25 +91,25 @@ window.onload = function () {
       const genres = JSON.parse(xhr.responseText);
       //button load all movies
       new ElementBuilder("li")
-          .append(new ElementBuilder("button").text("Show All").class("genre")
+          .append(new ElementBuilder("button").text("All").class("genreAllButton").class("genreButton")
                     .listener("click", () => loadMovies()))
                     .appendTo(listElement);
 
-      /* later to add my favorite movies, need to addid movie-model.js first
-      need to add a if(item !== fav) genres.for each below? 
-      new ELementBuilder("li")
-          .append(new ElementBuilder("button").text("My favs").class("genre")
-                    .listener("click", () => loadMovies(fav)))
+      /* add my favorite movies */
+      new ElementBuilder("li")
+          .append(new ElementBuilder("button").text("My Favorites").class("genreButton")
+                    .listener("click", () => loadMovies("Favorite")))
                     .appendTo(listElement);
        
-                    */                           
-
+                                            
       //for each genres make one button
       genres.forEach(genre => {
+        if(genre !== "Favorite"){
         new ElementBuilder("li")
-          .append(new ElementBuilder("button").text(genre).class("genre")
+          .append(new ElementBuilder("button").text(genre).class("genreButton")
                     .listener("click", () => loadMovies(genre)))
                     .appendTo(listElement);
+        }
       });
 
       /* When a first button exists, we click it to load all movies. */
