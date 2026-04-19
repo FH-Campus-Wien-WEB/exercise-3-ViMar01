@@ -1,9 +1,26 @@
 @import url(base.css);
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Outline&display=swap');
+
 /*einzelne Elemente */
 h1 {
-  font-size: 200%;
+  font-family: 'Bungee Outline', cursive;
+  letter-spacing: 10px;
+  font-size: 170%;
   margin: 8px 0px;
+
+  text-shadow: 0 0 5px #d73feb,
+                    0 0 20px #d73feb,
+                    0 0 30px #d73feb,
+                   0 0 50px #d73feb;
 }
+
+h3 {
+  font-style: italic;
+  margin-top: 15px;
+}
+
+
+
 
 a {
   color: beige;
@@ -83,6 +100,15 @@ ul {
   list-style-type: none;
 }
 
+.genreAllButton{
+  color: beige;
+  padding: 4px 8px;
+  border: solid black 1px;
+  border-radius: 6px;
+  background-color: rgb(54, 33, 108);
+  font-weight: bold;
+}
+
 /*button in nav for genre*/
 .genreButton {
   padding: 4px 8px;
@@ -109,6 +135,7 @@ article {
   border-radius: 16px;
   padding: 16px;
   margin: 8px;
+  box-shadow: 7px 7px 2px rgb(190, 191, 182,0.2);
 }
 
 article ul li {
@@ -119,6 +146,7 @@ article ul li::before {
   content: "★";
 }
 
+/* edit button */
 article button {
   background-color: #68686b;
   color: black;
@@ -138,6 +166,15 @@ article button {
   margin-right: 8px;
   margin-top: 5px;
   display: inline-block;
+}
+
+.timeContainer,
+.ratingContainer
+ {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-style: italic;
 }
 
 footer{
@@ -170,6 +207,18 @@ img {
     ;
 }
 
+h1 {
+  font-family: 'Bungee Outline', cursive;
+  letter-spacing: 10px;
+  font-size: 200%;
+  margin: 8px 0px;
+
+  text-shadow: 0 0 5px #d73feb,
+               0 0 20px #d73feb,
+               0 0 30px #d73feb,
+               0 0 50px #d73feb;
+}
+
 header{
   grid-area: header;
   display: flex;
@@ -178,8 +227,8 @@ header{
   padding-left: 1%;
 }
 
-article{
-  width: 700px;
+nav{
+   overflow-y: auto;
 }
 
 main{
@@ -189,8 +238,12 @@ main{
   grid-area: main;
 }
 
-nav{
-   overflow-y: auto;
+article{
+  width: 700px;
+}
+
+article h2{
+  margin: 0px;
 }
 
 
@@ -199,9 +252,6 @@ nav{
 
   border-radius: 10px;
   margin-bottom: 10px;
-
-  padding: 10px;
-
 }
 
 .infoContainer {
@@ -213,6 +263,13 @@ nav{
 /*betrifft alle Kinder */
 .infoContainer > * {
   margin-bottom: 0px;
+}
+
+.titleContainer {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 
@@ -228,7 +285,7 @@ nav{
   margin-bottom: 5px;
 }
 
-.genreButton:hover {
+.genreAllButton:hover {
   animation:slidebg 3s linear infinite;
 }
 @keyframes slidebg {
